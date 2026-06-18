@@ -1,0 +1,34 @@
+import { Config } from "prettier";
+
+export default {
+    // darkMode를 어떠한 방식으로 사용하게 될건지를 결정
+    darkMode: "class",
+    // tailwindcss가 클래스를 구성할 때 참고해야 되는 코드들의 위치
+    content: ["./app/**/*.{js,jsx,ts,tsx}", "./components/**/*.{js,jsx,ts,tsx}"],
+    presets: [require("nativewind/preset")],
+    plugins: [],
+} satisfies Config;
+
+// satisfies : 타입을 지정하는 방식이나, 해당 객체의 모양을 만족하는지에 대해서만 검사함
+//             맞지 않더라도 에러는 아님.
+// type user = {
+//     name: string;
+//     nickname: string;
+// }
+
+// const a = {
+//     name: "abc",
+//     nickname: "e",
+// } satisfies User
+
+
+// 값에 :을 붙여서 타입을 지정하는건 진짜 그 모양 그대로만 맞춰줘야 함
+// type user = {
+//     name: string;
+//     nickname: string;
+// }
+
+// const a: User = {
+//     name: "abc",
+//     nickname: "e",
+// }
