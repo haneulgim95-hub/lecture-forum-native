@@ -24,6 +24,8 @@ export const useAuthStore = create<AuthState>()(
         {
             name: "auth-storage",
             storage: createJSONStorage(() => AsyncStorage),
+            // *"우리 앱은 스마트폰 앱이라 웹 브라우저 로컬스토리지가 없어!
+            // 그러니까 데이터를 JSON 글자 형식으로 예쁘게 포장해서(createJSONStorage), 우리 스마트폰 기기 자체 저장소인 **AsyncStorage에다가 안전하게 보관(storage:)*해줘!"
         },
     ),
 );
