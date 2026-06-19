@@ -2,6 +2,7 @@ import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { User } from "@/types/user";
+import { Platform } from "react-native";
 
 type AuthState = {
     isLoggedIn: boolean;
@@ -11,6 +12,13 @@ type AuthState = {
     login: (user: User, token: string) => void;
     logout: () => void; // 💡 VoidFunction 대신 표준 화살표 함수 타입으로 직관적으로 변경
 };
+
+// 이 프로그램이 구동되는 환경에 따라 사용해야 하는 스토리지(저장소)가 달라져야 함
+// 웹이면 localStorage, 앱이면 AsyncStorage
+const storage =
+    Platform.OS === "web"
+        ? createJSONStorage(() => localStorage)
+        : createJSONStorage(() => AsyncStorage);
 
 export const useAuthStore = create<AuthState>()(
     persist(
@@ -23,9 +31,7 @@ export const useAuthStore = create<AuthState>()(
         }),
         {
             name: "auth-storage",
-            storage: createJSONStorage(() => AsyncStorage),
-            // *"우리 앱은 스마트폰 앱이라 웹 브라우저 로컬스토리지가 없어!
-            // 그러니까 데이터를 JSON 글자 형식으로 예쁘게 포장해서(createJSONStorage), 우리 스마트폰 기기 자체 저장소인 **AsyncStorage에다가 안전하게 보관(storage:)*해줘!"
+            storage,
         },
     ),
 );

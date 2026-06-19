@@ -7,6 +7,46 @@ export default {
     content: ["./app/**/*.{js,jsx,ts,tsx}", "./components/**/*.{js,jsx,ts,tsx}"],
     presets: [require("nativewind/preset")],
     plugins: [],
+    theme: {
+        extend: {
+            colors: {
+                /* 이 부분에 내가 원하는 컬러 팔레트를 마음대로 적으면 됨 */
+                background: {
+                    default: "var(--bg-default)",
+                    paper: "var(--bg-paper)",
+                },
+                text: {
+                    default: "var(--text-default)",
+                    secondary: "var(--text-secondary)",
+                },
+                divider: "var(--divider)",
+                primary: {
+                    main: "var(--primary-main)",
+                    contrast: "var(--primary-contrast)",
+                },
+                secondary: {
+                    main: "var(--secondary-main)",
+                    contrast: "var(--secondary-contrast)",
+                },
+                error: {
+                    main: "var(--error-main)",
+                    contrast: "var(--error-contrast)",
+                },
+                success: {
+                    main: "var(--success-main)",
+                    contrast: "var(--success-contrast)",
+                },
+                warning: {
+                    main: "var(--warning-main)",
+                    contrast: "var(--warning-contrast)",
+                },
+                info: {
+                    main: "var(--info-main)",
+                    contrast: "var(--info-contrast)",
+                },
+            },
+        },
+    },
 } satisfies Config;
 
 // satisfies : 타입을 지정하는 방식이나, 해당 객체의 모양을 만족하는지에 대해서만 검사함
@@ -20,7 +60,6 @@ export default {
 //     name: "abc",
 //     nickname: "e",
 // } satisfies User
-
 
 // 값에 :을 붙여서 타입을 지정하는건 진짜 그 모양 그대로만 맞춰줘야 함
 // type user = {
