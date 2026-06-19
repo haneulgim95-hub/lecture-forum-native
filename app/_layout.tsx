@@ -2,8 +2,7 @@ import { Slot } from "expo-router";
 import "../styles/global.css";
 import { useThemeStore } from "@/stores/theme/useThemeStore";
 import { useColorScheme } from "nativewind";
-import { Animated } from "react-native";
-import View = Animated.View;
+import { View } from "react-native";
 import { useEffect } from "react";
 
 export default function RootLayout() {
