@@ -13,5 +13,5 @@ const registerUser = async (
 
 export default { registerUser };
 
-// Pick은 <첫번째 자리, 두번쨰자리> 첫번쨰 자리 타임을 기준으로 두번쨰 자리에 써놓은 것만 "제외"
+// Pick은 <첫번째 자리, 두번쨰자리> 첫번쨰 자리 타임을 기준으로 두번쨰 자리에 써놓은 것만 "포함"
 // Omit은 <첫번째 자리, 두번쨰자리> 첫번쨰 자리 타임을 기준으로 두번쨰 자리에 써놓은 것만 "제외" => confirmPassword를 제외한 새로운 타입을 만들 필요가 없다!

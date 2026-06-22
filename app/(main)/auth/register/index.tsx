@@ -110,6 +110,7 @@ function Register() {
                         render={({ field: { onChange, onBlur, value } }) => {
                             return (
                                 <InputGroup
+                                    id={"username"}
                                     label={"아이디"}
                                     placeholder={"4자 이상 입력해주세요."}
                                     onBlur={onBlur}
@@ -126,6 +127,7 @@ function Register() {
                         render={({ field: { onChange, onBlur, value } }) => {
                             return (
                                 <InputGroup
+                                    id={"password"}
                                     secureTextEntry={true} // 비밀번호 마스킹 속성
                                     label={"비밀번호"}
                                     placeholder={"6자 이상 입력해주세요."}
@@ -143,6 +145,7 @@ function Register() {
                         render={({ field: { onChange, onBlur, value } }) => {
                             return (
                                 <InputGroup
+                                    id={"confirmPassword"}
                                     secureTextEntry={true}
                                     label={"비밀번호 확인"}
                                     placeholder={"비밀번호를 다시 입력해주세요."}
@@ -160,6 +163,7 @@ function Register() {
                         render={({ field: { onChange, onBlur, value } }) => {
                             return (
                                 <InputGroup
+                                    id={"name"}
                                     label={"이름"}
                                     placeholder={"이름을 입력해주세요."}
                                     onBlur={onBlur}
@@ -176,6 +180,7 @@ function Register() {
                         render={({ field: { onChange, onBlur, value } }) => {
                             return (
                                 <InputGroup
+                                    id={"nickname"}
                                     label={"닉네임"}
                                     placeholder={"2자 이상 10자 이내 닉네임을 입력해주세요."}
                                     onBlur={onBlur}
@@ -192,6 +197,7 @@ function Register() {
                         render={({ field: { onChange, onBlur, value } }) => {
                             return (
                                 <InputGroup
+                                    id={"email"}
                                     label={"이메일"}
                                     placeholder={"이메일을 입력해주세요."}
                                     keyboardType={"email-address"}
@@ -210,6 +216,7 @@ function Register() {
                         render={({ field: { onChange, onBlur, value } }) => {
                             return (
                                 <InputGroup
+                                    id={"phoneNumber"}
                                     label={"전화번호"}
                                     placeholder={"전화번호를 입력해주세요."}
                                     keyboardType={"phone-pad"}
@@ -228,6 +235,7 @@ function Register() {
                         render={({ field: { onChange, onBlur, value } }) => {
                             return (
                                 <InputGroup
+                                    id={"birthdate"}
                                     label={"생년월일"}
                                     placeholder={"YYYYMMDD"}
                                     keyboardType={"number-pad"}
