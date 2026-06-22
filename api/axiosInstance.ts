@@ -1,0 +1,19 @@
+import { create } from "axios";
+
+// React는 VITE를 통해 구동을 시켰기 때문에 접두사가 VITE_로 시작함
+// React-Native + Expo 환경에서는 VITE_ 대신 EXPO_PUBLIC_ 으로 접두사가 시작됨
+
+// Vite: "우리는 최신 웹 표준(ESM)을 따르니까 import.meta.env를 쓸게!"
+// Expo: "우리는 모바일 앱 빌드 엔진(Metro/Node.js) 기반이니까 익숙한 process.env를 쓸게!"
+
+const BASE_URL = process.env.EXPO_PUBLIC_API_BASE_URL || "";
+
+const api = create({
+    baseURL: BASE_URL,   // 직접 주소를 코드 상에 기재하지 않고, 환경변수를 통해 값을 집어넣어야 함
+    timeout: 5000, // 통신이 안된다고 판단하는 기준 시간
+    withCredentials: true,   // 쿠키를 사용할 수 있도록 설정
+})
+
+export default api;
+
+// 인터셉터를 쓸 수 있음

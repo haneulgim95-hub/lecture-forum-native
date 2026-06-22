@@ -7,10 +7,6 @@ import { useThemeStore } from "@/stores/theme/useThemeStore";
 function MainHeader() {
     const { theme, onChangeTheme } = useThemeStore();
 
-    console.log("=== 현재 헤더 렌더링 상태 ===");
-    console.log("현재 테마(theme):", theme);
-    console.log("보여줄 아이콘 이름:", theme === "light" ? "sunny" : "moon");
-
     return (
         <View className={"w-full h-16 bg-background-paper border-b border-divider "}>
             <View className={"flex-row justify-between items-center w-full max-w-5xl mx-auto h-16"}>
@@ -48,3 +44,9 @@ function MainHeader() {
 }
 
 export default MainHeader;
+
+// pnpm install tailwind-merge
+// tailwindcss는 컴포넌트에 className 속성에 string 값으로 클래스를 지정해서 스타일링
+// 그러다보니, string이 너무 길어짐 => 한눈에 스타일링을 읽어들이기 어렵다는 단점
+// 클래스들이 써있는 string을 합쳐서 제공할 수 있게 하는 라이브러리
+// array나 string을 통해 내 마음대로 끊어서 쓸 수 있도록 해줌
