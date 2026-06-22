@@ -8,8 +8,6 @@ import Card from "@/components/common/card/Card";
 import InputGroup from "@/components/common/input/InputGroup";
 import ErrorMessage from "@/components/common/form/ErrorMessage";
 import Button from "@/components/common/button/Button";
-import { useEffect } from "react";
-import { awaitExpression } from "@babel/types";
 import userApi from "@/api/user/userApi";
 import { isAxiosError } from "axios";
 
