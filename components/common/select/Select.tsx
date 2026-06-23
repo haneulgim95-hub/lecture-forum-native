@@ -53,7 +53,7 @@ function Select({
                     className={selectedOption ? "text-text-default" : "text-secondary-main"}>
                     {selectedOption ? selectedOption.label : placeholder}
                 </TextComponent>
-                <Ionicons name={"chevron-down"} size={16} className={"9CA3AF"} />
+                <Ionicons name={"chevron-down"} size={16} className={"text-secondary-main"} />
             </Pressable>
 
             {/*
@@ -65,6 +65,7 @@ function Select({
                     visible={isOpen} // 모달이 화면에 보여지는 것을 boolean으로 결정
                     transparent={true} // 이 모달창이 투명인지를 boolean 결정
                     animationType={"fade"} // 이 모달창이 뜨고 사라질 때의 애니메이션 결정
+                    // 안드로이드의 '뒤로 가기' 버튼을 눌렀을 때 모달을 닫아주는 안전장치
                     onRequestClose={() => setIsOpen(false)}>
                     <Pressable
                         className={"flex-1 justify-center items-center px-5"}

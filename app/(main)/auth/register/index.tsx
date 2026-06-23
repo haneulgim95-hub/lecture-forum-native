@@ -2,7 +2,7 @@ import { useRouter } from "expo-router";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { RegisterUserInputType, registerUserSchema } from "@/schemas/user/registerUserSchema";
-import { Alert, KeyboardAvoidingView, Platform, ScrollView} from "react-native";
+import { Alert, KeyboardAvoidingView, Platform, ScrollView } from "react-native";
 import { twMerge } from "tailwind-merge";
 import Card from "@/components/common/card/Card";
 import InputGroup from "@/components/common/input/InputGroup";
@@ -40,10 +40,23 @@ function Register() {
     const onSubmit = async (data: RegisterUserInputType) => {
         try {
             const { confirmPassword, ...submitData } = data;
+
+            // 전 세계 컴퓨터들이 약속한 표준 날짜 형태(ISO 표준)이기 때문에,
+            // 백엔드나 데이터베이스(DB) 시스템이 "어? 이거 날짜 형식이네!" 하고 알아서 날짜 데이터로 찰떡같이 인식해 저장합니다.
+            // string에는 slice(시작인덱스, 끝 전 인덱스)
+            const formattedDate =
+                data.birthdate && data.birthdate !== ""
+                    ? data.birthdate.slice(0, 4) +
+                      "-" +
+                      data.birthdate.slice(4, 6) +
+                      "-" +
+                      data.birthdate.slice(6, 8)
+                    : undefined;
+
             const payload = {
                 ...submitData,
                 phoneNumber: data.phoneNumber === "" ? undefined : data.phoneNumber,
-                birthdate: data.birthdate === "" ? undefined : data.birthdate,
+                birthdate: formattedDate,
             };
             await userApi.registerUser(payload);
 
@@ -60,7 +73,7 @@ function Register() {
             console.log(error);
             let errorMessage = "회원가입 중 오류가 발생했습니다.";
 
-            if (isAxiosError(error)){
+            if (isAxiosError(error)) {
                 errorMessage = error.response?.data?.message || errorMessage;
             } else if (error instanceof Error) {
                 errorMessage = error.message;
