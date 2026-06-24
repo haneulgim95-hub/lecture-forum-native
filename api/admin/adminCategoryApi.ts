@@ -7,8 +7,18 @@ const getCategoryList = async (): Promise<Category[]> => {
     return response.data.data;
 };
 
+const getCategoryById = async (id: number): Promise<Category> => {
+    const response = await axiosInstance.get(`/admin/category/${id}`);
+    return response.data.data;
+};
+
 const createCategory = async (input: AdminCategoryInputType): Promise<Category> => {
     const response = await axiosInstance.post("/admin/category/create", input);
+    return response.data.data;
+};
+
+const updateCategory = async (id: number, input: AdminCategoryInputType): Promise<Category> => {
+    const response = await axiosInstance.patch(`/admin/category/${id}`, input);
     return response.data.data;
 };
 
@@ -17,4 +27,10 @@ const toggleCategoryStatus = async (id: number): Promise<Category> => {
     return response.data.data;
 };
 
-export default { getCategoryList, toggleCategoryStatus, createCategory };
+export default {
+    getCategoryList,
+    getCategoryById,
+    createCategory,
+    updateCategory,
+    toggleCategoryStatus,
+};
