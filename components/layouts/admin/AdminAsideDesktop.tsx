@@ -22,7 +22,7 @@ function AdminAsideDesktop() {
                     <Button
                         variant={"text"}
                         color={"primary"}
-                        className={"text-xl font-semibold border-b border-divider"}>
+                        className={"h-16 text-xl font-semibold border-b border-divider"}>
                         관리자 센터
                     </Button>
                 </Link>
@@ -40,20 +40,20 @@ function AdminAsideDesktop() {
                                         ["flex-row", "items-center", "gap-3", "px-4", "py-3.5"],
                                         ["rounded-xl", "transition-all"],
                                         isActive
-                                            ? "bg-primary-main/10"
-                                            : "hover:bg-background-default",
+                                            ? "bg-primary-main text-text-default"
+                                            : "hover:bg-background-default",    // 지금 현재 사용자가 위치한 메뉴는 배경색 강조
                                     )}>
                                     <Feather
                                         name={item.icon as any}
                                         size={18}
                                         className={
-                                            isActive ? "text-primary-main" : "text-text-secondary"
+                                            isActive ? "text-text-default" : "text-text-secondary"
                                         }
                                     />
                                     <TextComponent
                                         className={twMerge(
                                             "font-bold",
-                                            isActive ? "text-primary-main" : "text-text-default",
+                                            // isActive ? "text-text-default" : "text-text-default",
                                         )}>
                                         {item.label}
                                     </TextComponent>
