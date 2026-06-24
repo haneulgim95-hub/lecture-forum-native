@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Category } from "@/types/category";
-import { Link, useRouter } from "expo-router";
+import { Link } from "expo-router";
 import adminCategoryApi from "@/api/admin/adminCategoryApi";
 import { Alert, Platform, Pressable, ScrollView, View } from "react-native";
 import LoadingIndicator from "@/components/common/loading/LoadingIndicator";
@@ -15,7 +15,6 @@ import { Feather } from "@expo/vector-icons";
 function AdminCategoryListPage() {
     const [list, setList] = useState<Category[]>([]);
     const [isLoading, setIsLoading] = useState(true);
-    const router = useRouter();
 
     const loadCategories = async () => {
         try {
@@ -68,9 +67,11 @@ function AdminCategoryListPage() {
             <Title
                 title={"카테고리 관리"}
                 description={"서브시의 토론장 카테고리를 관리하고 생성할 수 있습니다."}>
-                <Button variant={"contained"} color={"primary"}>
-                    + 카테고리 생성
-                </Button>
+                <Link href={"/admin/categories/create"}>
+                    <Button variant={"contained"} color={"primary"}>
+                        + 카테고리 생성
+                    </Button>
+                </Link>
             </Title>
 
             <Card className={twMerge(["flex-1", "overflow-hidden"])}>
