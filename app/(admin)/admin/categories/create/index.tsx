@@ -80,7 +80,7 @@ function AdminCategoryCreatePage() {
                         ["mt-6"],
                         ["flex-row", "items-center", "justify-end", "gap-3"],
                     )}>
-                    <Button variant={"outlined"} color={"secondary"} onPress={() => router.back()}>
+                    <Button variant={"outlined"} color={"secondary"} onPress={() => router.push("/admin/categories")}>
                         취소
                     </Button>
                     <Button
