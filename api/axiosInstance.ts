@@ -1,4 +1,5 @@
 import { create } from "axios";
+import { useAuthStore } from "@/stores/auth/useAuthStore";
 
 // React는 VITE를 통해 구동을 시켰기 때문에 접두사가 VITE_로 시작함
 // React-Native + Expo 환경에서는 VITE_ 대신 EXPO_PUBLIC_ 으로 접두사가 시작됨
@@ -16,4 +17,12 @@ const api = create({
 
 export default api;
 
-// 인터셉터를 쓸 수 있음
+// 인터셉터를 쓸 수 있음 => 요청시마다 신분증(토큰) 제시!
+api.interceptors.request.use(config => {
+    const { token } = useAuthStore.getState();
+
+    if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+})
