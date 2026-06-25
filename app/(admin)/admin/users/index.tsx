@@ -176,11 +176,11 @@ function AdminUserListPage() {
                                 className={twMerge(["w-24", "hidden", "md:flex"], ["text-center"])}>
                                 {item.createdAt.substring(0, 10)}
                             </TextComponent>
-                            <View className={twMerge(["w-20"], ["text-center"])}>
+                            <View className={twMerge(["w-20", "flex-row"], ["text-center"])}>
                                 <Pressable
                                     className={"p-1.5"}
                                     disabled={!!item.deletedAt}
-                                    onPress={() => router.push(`admin/users/${item.id}`)}>
+                                    onPress={() => router.push(`/admin/users/${item.id}`)}>
                                     <Feather
                                         name={"edit-2"}
                                         size={16}
