@@ -43,7 +43,8 @@ function AdminUserListPage() {
     };
 
     useEffect(() => {
-        loadUsers(currentPage, pageSize).then(() => {});
+        loadUsers(currentPage, pageSize).then(() => {
+        });
     }, [currentPage, pageSize]);
 
     const totalPage = Math.ceil(total / pageSize) || 1;
@@ -65,7 +66,8 @@ function AdminUserListPage() {
 
         if (Platform.OS === "web") {
             if (confirm("정말 이 유저를 삭제 처리 하시겠습니까?")) {
-                executeDelete().then(() => {});
+                executeDelete().then(() => {
+                });
             }
         } else {
             Alert.alert("경고", "정말 이 유저를 삭제 처리 하시겠습니까?", [
@@ -154,9 +156,9 @@ function AdminUserListPage() {
                                         {item.username}
                                     </TextComponent>
                                     {item.deletedAt && (
-                                        <Badge color={"error"} size={"small"} variant={"outlined"}>
+                                        <TextComponent><Badge color={"error"} size={"small"} variant={"outlined"}>
                                             탈퇴
-                                        </Badge>
+                                        </Badge></TextComponent>
                                     )}
                                 </View>
                                 <TextComponent
