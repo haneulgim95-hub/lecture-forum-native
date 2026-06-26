@@ -1,9 +1,5 @@
 import TextComponent from "@/components/common/text/TextComponent";
 import { useLocalSearchParams, useRouter } from "expo-router";
-import {
-    AdminCreateUserInputType,
-    adminCreateUserSchema,
-} from "@/schemas/user/adminCreateUserSchema";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Gender, Role } from "@/types/user";
