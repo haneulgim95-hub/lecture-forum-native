@@ -14,25 +14,16 @@ import { Role } from "@/types/user";
 import Button from "@/components/common/button/Button";
 import Accordion from "@/components/common/accordion/Accordion";
 
-function MainHeaderMobile() {
+interface Props {
+    list: Category[];
+}
+
+function MainHeaderMobile({list}: Props) {
     const router = useRouter();
     const { theme, onChangeTheme } = useThemeStore();
     const { isLoggedIn, user, logout } = useAuthStore();
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [list, setList] = useState<Category[]>([]);
-
-    useEffect(() => {
-        const loadCategories = async () => {
-            try {
-                const result = await categoryApi.getCategoryList();
-                setList(result);
-            } catch (error) {
-                console.log(error);
-            }
-        };
-        loadCategories().then(() => {});
-    }, []);
 
     const handleNavigate = (path: string) => {
         setIsMenuOpen(false);
